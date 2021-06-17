@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+    width: 100vw;
+    
+}
+
+.header-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    
+    background-color: #325288;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.header {
+    margin: 0px 20px;
+    width: 100%;
+    height: 80%;
+    
+    display: flex;
+    align-items: center;
+   
+}
+
+.views-container {
+    margin-top: 90px;
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    
+}
+
+.views {
+    color: black;
+    margin: 0px 20px;
+    font-family: 'Comic Neue', cursive;
+}
+
+.name {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    cursor: pointer;
+    color:rgb(56, 56, 56);
+}
+
+.name:hover {
+    cursor: pointer;
+    color:rgb(56, 56, 56);
+}
+
+.main-container {
+    
+    min-width: fit-content;
+    
+    min-height: 400px;
+    padding: 10px 0px;
+    
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-container {
+    
+    min-width: 500px;
+    width: 60%;
+    
+    min-height: 60vh;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-family: 'Comic Neue', cursive;
+}
+
+
+.comic-info-container {
+    
+    width: fit-content;
+    height: fit-content;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin: 0px 20px;
+}
+
+.img-container {
+    margin-top: 20px;
+}
+
+.transcription-container {
+    margin-top: 15px;
+}
+
+.prev-button {
+    min-width: 100px;
+    height: 40px;
+    border-radius: 1rem;
+    border: 1px solid black;
+    background-color: #f79e7b;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev-button:disabled {
+    z-index: -5
+}
+
+.next-button {
+    min-width: 100px;
+    height: 40px;
+    border-radius: 1rem;
+    border: 1px solid black;
+    background-color: #f79e7b;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next-button:disabled {
+    z-index: -5;
+}
+
+.random-button {
+    width: 160px;
+    height: 50px;
+    border-radius: 1rem;
+    border: 2px solid black;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: white;
+    background-image: linear-gradient(to right bottom, #051937, #123060, #22498d, #3664bc, #4b7fed);
+    margin-top: 7.5px;
+}
+
+.prev-button:hover {
+    cursor: pointer;
+    background-color: #F5CEBE;
+}
+
+.next-button:hover {
+    cursor: pointer;
+    background-color: #F5CEBE;
+}
+
+.random-button:hover {
+    cursor: pointer;
+    background-image: linear-gradient(to right bottom, #172e50, #3a4f70, #4970b3, #4b72bb, #7f99d3);
+}

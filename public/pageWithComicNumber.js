@@ -1,48 +1,28 @@
 var comic = {}
-var totalComics = 0;
 
-const prevButton = document.getElementsByClassName('prev-button')[0];
-const nextButton = document.getElementsByClassName('next-button')[0];
-const randomButton = document.getElementsByClassName('random-button')[0];
 const title = document.getElementsByClassName('title')[0]
 const date = document.getElementsByClassName('date')[0]
 const transcript = document.getElementsByClassName('transcript')[0]
 const comicImg = document.getElementById('comic-img')
-const views = document.getElementsByClassName("views")[0]
+const views = document.getElementsByClassName('views')[0]
 
 const startProgram =async () => {
-    await getData()
+    await getDataWithNumber()
+    
     mainMethods()
 }
 
 const mainMethods = () => {
-    handleViewsCounter()
     addComicImg()
+    handleViewsCounter()
     addTitle()
     addDate()
     addTranscription()
-    checkIfNextBtnShouldBeDisabled()
-    checkIfPrevBtnShouldBeDisabled()
 }
 
 
-const getData = async () => {
-    await fetch("https://infinite-island-74981.herokuapp.com/api/getComicData", {method: "GET"})
-    .then(async res => {
-        comic = await res.json()
-        totalComics = comic.num
-        console.log(comic)
-    })
-    
-}
-
-const getDataWithNumber = async (comicNumber) => {
-    await fetch("https://infinite-island-74981.herokuapp.com/api/getComicDataWithNumber", {
-        method: "POST",
-        headers: {
-        'Content-Type': 'application/json',
-        }, 
-        body: JSON.stringify({comicNumber: comicNumber})})
+const getDataWithNumber = async () => {
+    await fetch("https://infinite-island-74981.herokuapp.com/api/getComicDataWithNumberURL")
     .then(async res => {
         comic = await res.json()
         console.log(comic)
@@ -98,27 +78,11 @@ const addDate = () => {
 }
 
 const addTranscription = () => {
+    
     const html = parseTranscription(comic.transcript)
-    console.log(html)
+  
     if (html !== undefined) {
         transcript.innerHTML = html
-    }
-    
-}
-
-const checkIfNextBtnShouldBeDisabled = () => {
-    if (comic.num === totalComics) {
-        nextButton.disabled = true;
-    } else {
-        nextButton.disabled = false;
-    }
-}
-
-const checkIfPrevBtnShouldBeDisabled = () => {
-    if (comic.num === 1) {
-        prevButton.disabled = true;
-    } else {
-        prevButton.disabled = false;
     }
 }
 
@@ -167,8 +131,6 @@ const parseTranscription = (transcription) => {
         for (var i = 1; i < strings.length; i++) {
             html += " "
             html += strings[i] + " <br><br>"
-            
-    
         }
         
         return html
@@ -176,23 +138,6 @@ const parseTranscription = (transcription) => {
     
 }
 
-prevButton.addEventListener('click', async event => {
-    await getDataWithNumber(comic.num-1)
-
-    mainMethods()
-});
-
-nextButton.addEventListener('click', async event => {
-    await getDataWithNumber(comic.num+1)
-    mainMethods()
-});
-
-randomButton.addEventListener('click', async event => {
-    const comicNumber = Math.round(Math.random() * totalComics)
-    console.log(comicNumber)
-    await getDataWithNumber(comicNumber)
-    mainMethods()
-});
 
 
 startProgram();
